@@ -45,11 +45,11 @@ const AnecdoteStats = ({ anecdotesMap }) => {
   return (
     <>
       <h2>Anecdote with most votes</h2>
-      {popularAnecdotes.map(({ text, votes }) => (
-        <p key={text}>
-          <span>{text}</span> <br />
-          <span>has {votes}</span>
-        </p>
+      {popularAnecdotes.map((anecdote) => (
+        <>
+          <AnecdoteView key={anecdote.text} anecdote={anecdote} />
+          <br />
+        </>
       ))}
     </>
   )
