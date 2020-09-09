@@ -46,10 +46,10 @@ const AnecdoteStats = ({ anecdotesMap }) => {
     <>
       <h2>Anecdote with most votes</h2>
       {popularAnecdotes.map((anecdote) => (
-        <>
-          <AnecdoteView key={anecdote.text} anecdote={anecdote} />
+        <React.Fragment key={anecdote.text}>
+          <AnecdoteView anecdote={anecdote} />
           <br />
-        </>
+        </React.Fragment>
       ))}
     </>
   )
