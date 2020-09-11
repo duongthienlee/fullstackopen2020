@@ -66,25 +66,23 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const voteHandle = (setType, value) => setType(value)
-
   return (
     <div>
       <h2>give feedback</h2>
       <Button
         text='good'
         className='vote-btn'
-        handleClick={() => voteHandle(setGood, good + 1)}
+        handleClick={() => setGood(good + 1)}
       />
       <Button
         text='neutral'
         className='vote-btn'
-        handleClick={() => voteHandle(setNeutral, neutral + 1)}
+        handleClick={() => setNeutral(neutral + 1)}
       />
       <Button
         text='bad'
         className='vote-btn'
-        handleClick={() => voteHandle(setBad, bad + 1)}
+        handleClick={() => setBad(bad + 1)}
       />
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
