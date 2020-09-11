@@ -1,36 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-const PersonForm = ({ persons, setPersons }) => {
-  const [newName, setNewName] = useState('')
-  const [newNum, setNewNum] = useState('')
-
-  const addPerson = (e) => {
-    e.preventDefault()
-
-    for (const p of persons) {
-      if (p.name === newName) {
-        return alert(`${newName} is already added to phonebook`)
-      }
-    }
-    return setPersons([
-      ...persons,
-      {
-        name: newName,
-        number: newNum,
-      },
-    ])
+const PersonForm = ({ handleAdd, newPerson, setNewPerson }) => {
+  const handleChange = (e) => {
+    setNewPerson({ ...newPerson, [e.target.name]: e.target.value })
   }
 
   return (
-    <form onSubmit={addPerson}>
+    <form onSubmit={handleAdd}>
       <div>
         name:{' '}
-        <input value={newName} onChange={(e) => setNewName(e.target.value)} />
+        <input
+          required
+          value={newPerson.name}
+          name='name'
+          onChange={handleChange}
+        />
       </div>
       <div>
         number:{' '}
-        <input value={newNum} onChange={(e) => setNewNum(e.target.value)} />
+        <input
+          required
+          value={newPerson.number}
+          name='number'
+          onChange={handleChange}
+        />
       </div>
       <div>
         <button type='submit'>add</button>
@@ -40,8 +34,9 @@ const PersonForm = ({ persons, setPersons }) => {
 }
 
 PersonForm.propTypes = {
-  persons: PropTypes.array.isRequired,
-  setPersons: PropTypes.func.isRequired,
+  handleAdd: PropTypes.func.isRequired,
+  newPerson: PropTypes.object.isRequired,
+  setNewPerson: PropTypes.func.isRequired,
 }
 
 export default PersonForm
