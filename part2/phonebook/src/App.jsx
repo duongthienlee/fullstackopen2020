@@ -42,10 +42,10 @@ const App = () => {
 
   const updatePerson = async (targetId) => {
     try {
-      await personService.update(targetId, newPerson)
+      let res = await personService.update(targetId, newPerson)
       let shallow = [...persons]
       let indexOfEle = shallow.findIndex((p) => p.id === targetId)
-      shallow[indexOfEle] = newPerson
+      shallow[indexOfEle] = res.data
       setPersons(shallow)
       setNewPerson({
         name: '',
