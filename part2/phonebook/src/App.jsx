@@ -120,6 +120,12 @@ const App = () => {
     }, 5000)
   }
 
+  const personsList = keyword
+    ? persons.filter(({ name }) =>
+        name.toLowerCase().includes(keyword.toLowerCase()),
+      )
+    : persons
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -132,7 +138,7 @@ const App = () => {
         handleAdd={handleAdd}
       />
       <h3>Numbers</h3>
-      <Persons keyword={keyword} persons={persons} handleDel={handleDel} />
+      <Persons persons={personsList} handleDel={handleDel} />
     </div>
   )
 }

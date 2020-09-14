@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Persons = ({ keyword, persons, handleDel }) => {
-  const personsList = keyword
-    ? persons.filter(({ name }) => name.includes(keyword))
-    : persons
-
+const Persons = ({ persons, handleDel }) => {
   return (
     <>
-      {personsList.map((p) => (
+      {persons.map((p) => (
         <div key={p.name}>
           <span>{p.name}</span> <span>{p.number}</span>{' '}
           <button
@@ -23,7 +19,6 @@ const Persons = ({ keyword, persons, handleDel }) => {
 }
 
 Persons.propTypes = {
-  keyword: PropTypes.string.isRequired,
   persons: PropTypes.array.isRequired,
   handleDel: PropTypes.func.isRequired,
 }
